@@ -11,7 +11,7 @@ export default async (request: VercelRequest, response: VercelResponse) => {
 
   const { id, token } = request.query
   let forchecking = `https://discord.com/api/webhooks/${id}/${token}?wait=true`
-  if (token.includes('?')) {
+  if (${token}.includes('?')) {
     forchecking = `https://discord.com/api/webhooks/${id}/${token}&wait=true`
   }
   const url = forchecking
