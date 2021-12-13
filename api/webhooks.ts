@@ -10,7 +10,11 @@ export default async (request: VercelRequest, response: VercelResponse) => {
   }
 
   const { id, token } = request.query
-  const url = `https://discord.com/api/webhooks/${id}/${token}?wait=true`
+  let forchecking = `https://discord.com/api/webhooks/${id}/${token}?wait=true`
+  if token.includes('?') {
+    forchecking = `https://discord.com/api/webhooks/${id}/${token}&wait=true`
+  }
+  const url = forchecking
 
   const contentType = request.headers['content-type'].split(';')[0]
 
